@@ -1,0 +1,13 @@
+.card-title Books
+ul.list-group
+  - @books.each do |book|
+    li.list-group-item
+      span = book.title
+      span = book.body
+
+
+.card-title New Book
+= form_with model: Book.new, local: true do |f|
+  = f.text_field :title
+  = f.text_field :body
+  = f.submit
