@@ -26,11 +26,10 @@ class BooksController < ApplicationController
     book = Book.find(params[:id])
     if book.destroy
       flash[:notice] = t('flash.successful')
-      # render :show
     else
       flash[:alert] = t('flash.error')
-      # render :index
     end
+    redirect_to books_path
   end
 
   def top
