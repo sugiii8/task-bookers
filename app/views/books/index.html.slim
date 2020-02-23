@@ -1,13 +1,27 @@
-.card-title Books
-ul.list-group
-  - @books.each do |book|
-    li.list-group-item
-      span = book.title
-      span = book.body
+h2 Books
+table.table
+  thead.thead-dark
+    tr
+      th no
+      th title
+      th body
+  tbody
+    - @books.each do |book|
+      tr
+        th = book.id
+        th = book.title
+        th = book.body
 
 
-.card-title New Book
-= form_with model: Book.new, local: true do |f|
-  = f.text_field :title
-  = f.text_field :body
-  = f.submit
+h2 New Book
+= bootstrap_form_for(Book.new) do |f|
+  - if f.object.errors.any?
+    p ;sssssssssss
+    .alert.alert-warning
+      ul
+        - model.errors.full_messages.each do |message|
+          li= message
+
+  = f.text_field :title, required: true
+  = f.text_area :body, required: true
+  = f.submit 'Submit'
