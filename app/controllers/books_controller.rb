@@ -14,10 +14,10 @@ class BooksController < ApplicationController
   def create
     book = Book.new(book_params)
     if book.save
-      flash[:notice] = '登録成功しました'
-      redirect_to books_path
+      flash[:notice] = t('flash.successful')
+      redirect_to book_path(book.id)
     else
-      flash[:alert] = '登録失敗しました'
+      flash[:alert] = t('flash.error')
       redirect_to books_path
     end
   end
@@ -25,10 +25,10 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     if book.destroy
-      flash[:notice] = '削除成功しました'
+      flash[:notice] = t('flash.successful')
       # render :show
     else
-      flash[:alert] = '削除失敗しました'
+      flash[:alert] = t('flash.error')
       # render :index
     end
   end
