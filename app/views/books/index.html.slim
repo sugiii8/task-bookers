@@ -1,30 +1,17 @@
 h2 Books
 table.table
-  thead.thead-dark
+  thead.thead
     tr
-      th no
       th title
       th body
   tbody
     - @books.each do |book|
       tr
-        th = book.id
         th = book.title
         th = book.body
         th = link_to 'Show', book_path(book.id)
         th = link_to 'Edit', edit_book_path(book.id)
         th = link_to 'Destroy', book_path(book.id), method: :delete, data: {confirm: 'are you syre?'}
 
-
 h2 New Book
-= bootstrap_form_for(Book.new) do |f|
-  - if f.object.errors.any?
-    p ;sssssssssss
-    .alert.alert-warning
-      ul
-        - model.errors.full_messages.each do |message|
-          li= message
-
-  = f.text_field :title, required: true
-  = f.text_area :body, required: true
-  = f.submit 'Submit'
+= render partial: 'books/book_form', locals: { model: @book }
