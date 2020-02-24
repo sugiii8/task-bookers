@@ -1,0 +1,11 @@
+h2 Books
+div
+  label.font-weight-bold = 'title'
+  span.ml-3 = @book.title
+div
+  label.font-weight-bold = 'body'
+  span.ml-3 = @book.body
+
+= link_to 'Edit', edit_book_path(@book.id)
+span = ' | '
+= link_to 'Back', books_path

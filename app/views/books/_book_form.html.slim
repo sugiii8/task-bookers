@@ -1,0 +1,17 @@
+sass:
+  .field_with_errors
+    border: 1px solid red;
+
+= form_with model: model, local: true do |f|
+  - if f.object.errors.any?
+    .alert.alert-warning
+      ul
+        - f.object.errors.full_messages.each do |message|
+          li = message
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :body
+    = f.text_area :body, class: 'form-control'
+  = f.submit 'Submit', class: 'btn btn-primary'
