@@ -7,11 +7,11 @@ html
   = csp_meta_tag
   = stylesheet_link_tag 'application', media: 'all'
   = javascript_pack_tag 'application'
-body.container-fluid
-  - if flash[:notice]
-    .alert.alert-success role="alert"
-      = flash[:notice]
-  - if flash[:alert]
-    .alert.alert-danger role="alert"
-      = flash[:alert]
-  = yield
+  body.container-fluid
+    - if flash[:notice]
+      .alert.alert-success role="alert"
+        = flash[:notice]
+    - if flash[:alert]
+      .alert.alert-danger role="alert"
+        = flash[:alert]
+    = yield
