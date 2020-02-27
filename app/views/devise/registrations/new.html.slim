@@ -9,6 +9,9 @@ h2
     = f.label :introduction
     = f.text_field :introduction
   .field
+    = f.label :image
+    = f.attachment_field :image
+  .field
     = f.label :email
     br
     = f.email_field :email, autocomplete: "email"
