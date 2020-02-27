@@ -33,3 +33,5 @@ module Lesson1
     config.generators.system_tests = nil
   end
 end
+
+Refile.secret_key=ENV['REFILE_SECRET_KEY']
