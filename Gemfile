@@ -34,6 +34,9 @@ gem 'jquery-rails'
 gem 'bootstrap'
 gem 'bootstrap_form'
 gem 'devise'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick", github: 'refile/refile-mini_magick'
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
