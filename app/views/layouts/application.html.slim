@@ -51,4 +51,11 @@ html
       .alert.alert-danger role="alert"
         = flash[:alert]
     .ml-2.mr-2
-      = yield
+      - if user_signed_in?
+        .row
+          .col-3
+            = render partial: 'layouts/signed_user_info', locals: {user: current_user}
+          .col-9
+            = yield
+      - else
+        = yield
