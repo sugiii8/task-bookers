@@ -1,1 +1,7 @@
-h2 Welcome to ff!
+h2
+  | welcome to
+  = icon 'fas', 'book', class: 'ml-2 mr-2'
+  | Bookers!
+
+div = link_to 'Log in', new_user_session_path, class: 'btn btn-primary btn-lg'
+div = link_to 'Sign up', new_user_registration_path, class: 'btn btn-success btn-lg'

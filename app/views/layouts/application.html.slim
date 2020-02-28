@@ -14,28 +14,41 @@ html
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.mr-auto
+          li.nav-item.mr-3
+            = link_to root_path do
+              = icon 'fas', 'home'
+              | Home
           - if user_signed_in?
-            li.nav-item.active
-              = link_to 'Home', root_path
-            li.nav-item.active
-              = link_to 'Users', users_path
-            li.nav-item.active
-              = link_to 'Books', books_path
-            li.nav-item.active
-              = link_to 'log out', destroy_user_session_path, method: :delete
+            li.nav-item.mr-3
+              = link_to users_path do
+                = icon 'fas', 'user'
+                | Users
+            li.nav-item.mr-3
+              = link_to books_path do
+                = icon 'fas', 'book'
+                | Books
+            li.nav-item.mr-3
+              = link_to destroy_user_session_path, method: :delete do
+                = icon 'fas', 'sign-out-alt'
+                | logout
           - else
-            li.nav-item.active
-              = link_to 'Home', root_path
-            li.nav-item.active
-              = link_to 'About', about_path
-            li.nav-item.active
-              = link_to 'sign up', new_user_registration_path
-            li.nav-item.active
-              = link_to 'login', new_user_session_path
+            li.nav-item.mr-3
+              = link_to about_path do
+                = icon 'fas', 'link'
+                | About
+            li.nav-item.mr-3
+              = link_to new_user_registration_path do
+                = icon 'fas', 'edit'
+                | sign up
+            li.nav-item.mr-3
+              = link_to new_user_session_path do
+                = icon 'fas', 'sign-in-alt'
+                | login
     - if flash[:notice]
       .alert.alert-success role="alert"
         = flash[:notice]
     - if flash[:alert]
       .alert.alert-danger role="alert"
         = flash[:alert]
-    = yield
+    .ml-2.mr-2
+      = yield
