@@ -54,7 +54,8 @@ html
       - if user_signed_in?
         .row
           .col-3
-            = render partial: 'layouts/signed_user_info', locals: {user: current_user}
+            div = render partial: 'layouts/signed_user_info', locals: {user: current_user}
+            div = render partial: 'layouts/book_form', locals: {model: Book.new}
           .col-9
             = yield
       - else

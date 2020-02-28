@@ -12,6 +12,3 @@ table.table
         th = link_to 'Show', book_path(book.id)
         th = link_to 'Edit', edit_book_path(book.id)
         th = link_to 'Destroy', book_path(book.id), method: :delete, data: {confirm: 'are you syre?'}
-
-h2 New Book
-= render partial: 'books/book_form', locals: { model: @book }
