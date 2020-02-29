@@ -47,6 +47,8 @@ group :development, :test do
   gem 'rspec-parameterized'
   gem 'capybara'
   gem 'shoulda-matchers'
+  gem 'faker'
+  gem 'selenium-webdriver'
 end
 
 group :development do
