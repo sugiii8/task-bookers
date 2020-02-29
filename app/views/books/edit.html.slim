@@ -1,2 +1,4 @@
-h2 New Book
-= render partial: 'books/book_form', locals: { model: @book }
+h2 Editing Book
+= render partial: 'layouts/book_form', locals: { model: @book, button: 'Update Book' }
+= link_to 'Show', book_path(@book.id)
+= link_to 'Back', books_path

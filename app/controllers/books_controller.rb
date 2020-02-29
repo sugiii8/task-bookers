@@ -10,7 +10,9 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
+    @book = Book.find_by(id: params[:id], user_id: current_user.id)
+    @disabled_sidebar = true
+    redirect_to books_path if @book.blank?
   end
 
   def create
@@ -20,6 +22,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id)
     else
       flash[:alert] = t('flash.error')
+      @resource = @book
       @books = Book.all
       render :index
     end
@@ -32,6 +35,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id)
     else
       flash[:alert] = t('flash.error')
+      @resource = @book
       render :edit
     end
   end

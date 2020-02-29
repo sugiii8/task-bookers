@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id], user_id: current_user.id)
+    redirect_to user_path(current_user.id) if @user.blank?
   end
 
   private

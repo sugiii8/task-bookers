@@ -7,18 +7,18 @@ html
   = csp_meta_tag
   = stylesheet_link_tag 'application', media: 'all'
   = javascript_pack_tag 'application'
-  body.container-fluid
+  body.container
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      a.navbar-brand href="#"  Bookers
+      h1 Bookers
       button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
         span.navbar-toggler-icon
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.mr-auto
-          li.nav-item.mr-3
-            = link_to root_path do
-              = icon 'fas', 'home'
-              | Home
           - if user_signed_in?
+            li.nav-item.mr-3
+              = link_to user_path(current_user.id) do
+                = icon 'fas', 'home'
+                | Home
             li.nav-item.mr-3
               = link_to users_path do
                 = icon 'fas', 'user'
@@ -33,7 +33,11 @@ html
                 | logout
           - else
             li.nav-item.mr-3
-              = link_to about_path do
+              = link_to root_path do
+                = icon 'fas', 'home'
+                | Home
+            li.nav-item.mr-3
+              = link_to home_about_path do
                 = icon 'fas', 'link'
                 | About
             li.nav-item.mr-3
@@ -50,13 +54,19 @@ html
     - if flash[:alert]
       .alert.alert-danger role="alert"
         = flash[:alert]
+    = render partial: 'layouts/error_messages', locals: { resource: @resource }
     .ml-2.mr-2
       - if user_signed_in?
         .row
-          .col-3
-            div = render partial: 'layouts/signed_user_info', locals: {user: current_user}
-            div = render partial: 'layouts/book_form', locals: {model: Book.new}
-          .col-9
-            = yield
+          - if @disabled_sidebar.present?
+            .col-xs-12
+              = yield
+          - else
+            .col-xs-3
+              div = render partial: 'layouts/signed_user_info', locals: {user: current_user}
+              - unless @disabled_book_form.present?
+                div = render partial: 'layouts/book_form', locals: {model: Book.new, button: 'Create Book'}
+            .col-xs-9
+              = yield
       - else
         = yield
