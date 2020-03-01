@@ -1,4 +1,4 @@
-h2 Books
+h2 Book detail
 div
   label.font-weight-bold = 'title'
   span.ml-3 = @book.title
@@ -6,6 +6,9 @@ div
   label.font-weight-bold = 'body'
   span.ml-3 = @book.body
 
-= link_to 'Edit', edit_book_path(@book.id)
-span = ' | '
+- if @book.mine?(current_user.id)
+  = link_to 'Edit', edit_book_path(@book.id)
+  span = ' | '
+  = link_to 'Destroy', book_path(@book.id), method: :delete
+  span = ' | '
 = link_to 'Back', books_path

@@ -4,10 +4,10 @@ table.table
     tr
       th name
       th introduction
-      th image
+      th profile_image
   tbody
     tr
       th = @user.name
       th = @user.introduction
-      th = attachment_image_tag(@user, :image, :fill, 200, 200)
+      th = attachment_image_tag(@user, :profile_image, :fill, 200, 200, class:'profile_image', fallback: 'no-image.jpg')
       th = link_to 'Back', users_path

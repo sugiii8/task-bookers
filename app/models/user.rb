@@ -10,5 +10,5 @@ class User < ApplicationRecord
 
   has_many :books
 
-  attachment :image
+  attachment :profile_image
 end

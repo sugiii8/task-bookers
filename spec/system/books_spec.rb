@@ -98,8 +98,8 @@ describe '投稿のテスト' do
         expect(page).to have_content 'Books'
       end
       it '自分と他人の画像のリンク先が正しい' do
-        expect(page).to have_link '', href: user_path(book.user)
-        expect(page).to have_link '', href: user_path(book2.user)
+        expect(page).to have_link book.user.name, href: user_path(book.user)
+        expect(page).to have_link book.user.name, href: user_path(book2.user)
       end
       it '自分と他人のタイトルのリンク先が正しい' do
         expect(page).to have_link book.title, href: book_path(book)

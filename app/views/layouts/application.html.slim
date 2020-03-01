@@ -16,7 +16,7 @@ html
         ul.navbar-nav.mr-auto
           - if user_signed_in?
             li.nav-item.mr-3
-              = link_to user_path(current_user.id) do
+              = link_to user_path(current_user) do
                 = icon 'fas', 'home'
                 | Home
             li.nav-item.mr-3

@@ -1,5 +1,5 @@
 h3 User info
-div = attachment_image_tag(user, :image, :fill, 200, 200, class: 'profile_image')
+div = attachment_image_tag(user, :profile_image, :fill, 200, 200, class: 'profile_image', fallback: 'no-image.jpg')
 table.table
   tbody
     tr
@@ -8,5 +8,5 @@ table.table
     tr
       th introduction
       th = user.introduction
-  = link_to edit_user_path(user.id), class: 'text-center d-block' do
+  = link_to edit_user_path(user), class: 'text-center d-block' do
     = icon 'fas', 'wrench'
