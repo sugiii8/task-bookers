@@ -1,4 +1,4 @@
 h2 Editing Book
 = render partial: 'layouts/book_form', locals: { model: @book, button: 'Update Book' }
-= link_to 'Show', book_path(@book.id)
+= link_to 'Show', book_path(@book)
 = link_to 'Back', books_path

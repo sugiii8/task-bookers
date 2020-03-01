@@ -7,8 +7,8 @@ div
   span.ml-3 = @book.body
 
 - if @book.mine?(current_user.id)
-  = link_to 'Edit', edit_book_path(@book.id)
+  = link_to 'Edit', edit_book_path(@book)
   span = ' | '
-  = link_to 'Destroy', book_path(@book.id), method: :delete
+  = link_to 'Destroy', book_path(@book), method: :delete
   span = ' | '
 = link_to 'Back', books_path

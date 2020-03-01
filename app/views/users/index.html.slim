@@ -2,11 +2,13 @@ h2 Users
 table.table
   thead.thead
     tr
+      th
       th name
       th introduction
   tbody
     - @users.each do |user|
       tr
+        th = attachment_image_tag(user, :profile_image, :fill, 200, 200, class: 'profile_image', fallback: 'no-image.jpg')
         th = user.name
         th = user.introduction
         th = link_to 'Show', user_path(user)
